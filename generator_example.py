@@ -1,5 +1,5 @@
 # This is example of generator function usage
-# test
+# testing again on git
 def example():
     i = 0
     while i < 10:
