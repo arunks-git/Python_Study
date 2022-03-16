@@ -1,6 +1,7 @@
-from bs4 import BeautifulSoup
-import requests
-import re
+from bs4 import BeautifulSoup   # Beatuful soup for web scrapping
+import requests  # for html request
+import re  # for regular expression
+import pyttsx3  # Text to Speech package
 
 url = "https://groww.in/markets/top-gainers"
 
@@ -19,9 +20,21 @@ for tr in trs:  # traverse through each line in tbody
     price1 = price.find_all(text= re.compile('[0-9,].*'))  # filtering out prices using regex and putting in list
     print("%-40s %-20s %-20s %-20s "%(stock_name,price1[0],price1[1],price1[2]))
 
+speaker = pyttsx3.init()
+speaker.say('Here is the Top three Stock')
+speaker.runAndWait()
 
-####### Another way by using CSS
+for tr in trs[0:3]:  # traverse through each line in tbody
+    name  =  tr.contents[0]   # filter out line 0 since that got the name
+    price = tr.contents[2]     # filter out line 2 since that got the price
+    stock_name = name.a.string   # Name is in 'a' tag and filter out
+    price1 = price.find_all(text= re.compile('[0-9,].*'))  # filtering out prices using regex and putting in list
+    speaker.say(f'{stock_name} at current price {price1[0]}')   # Readout  the top three stocks
+    speaker.runAndWait()
 
+
+
+"""
 for tr in body:
     locator1 = 'table.tb10Table tbody tr td a'  ## find the locator tree
     locator2 = 'table.tb10Table tbody tr td.fs14.fw500'
@@ -30,3 +43,4 @@ for tr in body:
     link2 = tr.select_one(locator2)
     stock5 = link1.attrs['title']   ## use html hierarcy or regular expressions.
     print(stock5)
+"""
