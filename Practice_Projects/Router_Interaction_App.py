@@ -9,6 +9,10 @@ speaker.setProperty('voice' ,'com.apple.speech.synthesis.voice.samantha')
 listener.energy_threshold = 300
 listener.pause_threshold = 0.8
 
+router_list = [{"Name": 'matrix', "IP": '10.10.10.10'},
+                   {"Name": 'oxygen', "IP": '20.20.20.20'},
+                   {"Name": 'test', "IP": '10.219.38.6'}]
+
 def initial_command():
     try:
         with sr.Microphone() as source:
@@ -81,10 +85,6 @@ def connect_device(IP):
     exit()
 
 
-
-router_list = [{"Name": 'matrix', "IP": '10.10.10.10'},
-                   {"Name": 'oxygen', "IP": '20.20.20.20'},
-                   {"Name": 'test', "IP": '10.219.38.6'}]
 while True:
     command = initial_command()
     print(command)
