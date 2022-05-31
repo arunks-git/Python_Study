@@ -3,7 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 import pyttsx3
 
-PATH = "/Users/arunks/Desktop/Python_Studies/chromedriver" # Define chrome driver location
+PATH = "/Practice_Projects/Web_Scrap_Class/chromedriver"  # Define chrome driver location
 driver = webdriver.Chrome(PATH)  # Define object named driver
 
 word = input("Find meaning of : ")
