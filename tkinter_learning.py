@@ -11,6 +11,7 @@ def abt():
 
 window = Tk()
 window.geometry("800x700")
+window.configure(background='white')
 window.title("Registration Form")
 
 img = Image.open("/Users/arunks/Downloads/regicon.jpeg")
